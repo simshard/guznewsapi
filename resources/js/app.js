@@ -4,10 +4,10 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+//require('./bootstrap');
 
 window.Vue = require('vue');
-
+window.axios = require('axios');
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -20,6 +20,25 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('news-feed', require('./components/Newsfeed.vue').default);
+
+
+
+/*
+Filter function : allows applying moment  date library  to Vue  instance
+not completely understood -ES6 stuff -spread /rest  operator and modele import/exports
+ */
+var moment = require('moment');
+
+require('moment/locale/en-gb'); // locales all in lower-case
+
+exports.install = function(Vue, options) {
+    Vue.prototype.moment = function(...args) {
+        return moment(...args);
+    };
+}
+
+Vue.use(exports);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

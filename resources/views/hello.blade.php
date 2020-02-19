@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-        <example-component></example-component>
-    </div>
+
+        <news-feed></news-feed>
+
 @endsection
